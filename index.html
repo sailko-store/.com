@@ -3,56 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جوهرة - شحن جواهر فري فاير بسعر الجملة</title>
+    <title>متجر الألعاب | GameHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <style>
         :root {
-            --primary: #FF5722;
-            --secondary: #FF9800;
-            --dark: #0A0F1F;
-            --light: #F5F5F5;
-            --success: #4CAF50;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --primary-color: #6A0DAD;
+            --primary-light: #AA8CC5;
+            --white: #FFFFFF;
+            --dark-bg: #121212;
+            --dark-secondary: #3A075F;
+            --text-light: #F5F5F5;
+            --text-dark: #333333;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Titillium Web', 'Rubik', sans-serif;
+            transition: all 0.3s ease;
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: var(--light);
-            min-height: 100vh;
-            background-attachment: fixed;
-            overflow-x: hidden;
+            background-color: var(--white);
+            color: var(--text-dark);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
         }
         
-        /* التصميم العلوي */
+        /* Header Styles */
         header {
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 15, 31, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 152, 0, 0.3);
-            box-shadow: var(--shadow);
-        }
-        
-        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .dark-mode header {
+            background-color: var(--dark-secondary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .logo {
@@ -62,739 +60,901 @@
         }
         
         .logo i {
-            color: var(--primary);
-            font-size: 28px;
-            animation: pulse 2s infinite;
+            font-size: 2rem;
+            color: var(--primary-color);
         }
         
         .logo h1 {
-            font-size: 24px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
-        .nav-links {
+        .search-bar {
             display: flex;
-            gap: 25px;
+            align-items: center;
+            width: 40%;
         }
         
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: 0.3s;
-        }
-        
-        .nav-links a:hover::after {
+        .search-bar input {
             width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 25px 0 0 25px;
+            outline: none;
         }
         
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            color: var(--light);
-            cursor: pointer;
-        }
-        
-        /* القسم الرئيسي */
-        .hero {
-            padding: 80px 0 50px;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .hero-content {
-            flex: 1;
-        }
-        
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-content h2 span {
-            color: var(--primary);
-            text-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        .search-bar button {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--primary-color);
             color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: 0.3s;
             border: none;
+            border-radius: 0 25px 25px 0;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
-        }
-        
-        .btn i {
-            margin-left: 8px;
-        }
-        
-        .hero-image {
-            flex: 1;
+        .header-actions {
             display: flex;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .diamond {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 87, 34, 0.1));
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 0 50px rgba(255, 152, 0, 0.2);
+            gap: 1.5rem;
+        }
+        
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        .dark-mode .dark-mode-toggle {
+            color: var(--primary-light);
+        }
+        
+        .cart-icon {
             position: relative;
-            animation: pulse 4s infinite;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
         }
         
-        .diamond-inner {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 87, 34, 0.2));
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 60px;
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary);
+        .dark-mode .cart-icon {
+            color: var(--primary-light);
         }
         
-        /* باقات الأسعار */
-        .pricing {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2::after {
-            content: '';
+        .cart-count {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--primary);
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
         }
         
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .pricing-card {
-            background: rgba(30, 30, 46, 0.7);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: 0.3s;
-            border: 1px solid rgba(255, 152, 0, 0.2);
-            backdrop-filter: blur(10px);
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
             position: relative;
             overflow: hidden;
         }
         
-        .pricing-card:hover {
+        .dark-mode .hero {
+            background: linear-gradient(135deg, var(--dark-secondary) 0%, var(--primary-color) 100%);
+        }
+        
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            opacity: 0.9;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .hero-animation {
+            position: absolute;
+            right: 5%;
+            width: 40%;
+            height: 100%;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 4rem 5%;
+        }
+        
+        .dark-mode .categories {
+            background-color: var(--dark-bg);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .dark-mode .section-title {
+            color: var(--primary-light);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .dark-mode .category-card {
+            background-color: var(--dark-secondary);
+        }
+        
+        .category-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .category-icon {
+            padding: 2rem;
+            font-size: 3rem;
+            color: var(--primary-color);
         }
         
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--light);
+        .dark-mode .category-icon {
+            color: var(--primary-light);
         }
         
-        .price span {
-            font-size: 1rem;
-            color: #aaa;
+        .category-card h3 {
+            padding: 0 1rem 1.5rem;
+            font-size: 1.2rem;
         }
         
-        .features {
-            list-style: none;
-            margin-bottom: 30px;
+        /* Featured Games */
+        .featured-games {
+            padding: 4rem 5%;
+            background-color: #F5F5F5;
         }
         
-        .features li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .dark-mode .featured-games {
+            background-color: #1E1E1E;
         }
         
-        .features li:last-child {
-            border-bottom: none;
-        }
-        
-        .features li i {
-            color: var(--success);
-            margin-left: 5px;
-        }
-        
-        .popular {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 30px;
-            transform: rotate(45deg);
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        /* طرق الدفع */
-        .payment {
-            padding: 80px 0;
-            background: rgba(10, 10, 20, 0.5);
-        }
-        
-        .payment-methods {
+        .games-scroll {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
         }
         
-        .method {
-            background: rgba(255, 255, 255, 0.05);
+        .games-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .games-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
             border-radius: 10px;
-            padding: 20px;
-            width: 150px;
-            text-align: center;
-            transition: 0.3s;
         }
         
-        .method:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 152, 0, 0.1);
+        .dark-mode .games-scroll::-webkit-scrollbar-track {
+            background: #333;
         }
         
-        .method i {
-            font-size: 40px;
-            margin-bottom: 15px;
-            color: var(--primary);
+        .games-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
         }
         
-        /* كيفية العمل */
-        .how-it-works {
-            padding: 80px 0;
-        }
-        
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        
-        .step {
-            flex: 1;
+        .game-card {
             min-width: 250px;
-            text-align: center;
-            padding: 30px;
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+        
+        .dark-mode .game-card {
+            background-color: var(--dark-secondary);
+        }
+        
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .game-image {
+            height: 150px;
+            background-color: #ddd;
             position: relative;
+            overflow: hidden;
         }
         
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 1.5rem;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .dark-mode .game-price {
+            color: var(--primary-light);
+        }
+        
+        .game-discount {
+            background-color: red;
             color: white;
-            border-radius: 50%;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--primary-light);
+        }
+        
+        /* Discount Section */
+        .discount-section {
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: white;
+        }
+        
+        .dark-mode .discount-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-secondary) 100%);
+        }
+        
+        .discount-timer {
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0 auto 20px;
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
-        .step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -15%;
-            width: 30%;
-            height: 2px;
-            background: var(--primary);
+        .timer-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 80px;
         }
         
-        /* فوتر */
+        .timer-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .timer-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
         footer {
-            background: rgba(5, 5, 15, 0.9);
-            padding: 50px 0 20px;
-            border-top: 1px solid rgba(255, 152, 0, 0.2);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 5%;
+        }
+        
+        .dark-mode footer {
+            background-color: var(--dark-secondary);
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
         }
         
         .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
             position: relative;
-            padding-bottom: 10px;
         }
         
         .footer-column h3::after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
+            bottom: -8px;
             width: 50px;
-            height: 2px;
-            background: var(--primary);
+            height: 3px;
+            background-color: white;
         }
         
-        .footer-column p {
-            color: #aaa;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            color: var(--primary);
-            transition: 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .footer-links {
+        .footer-column ul {
             list-style: none;
         }
         
-        .footer-links li {
-            margin-bottom: 10px;
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
         }
         
-        .footer-links a {
-            color: #aaa;
+        .footer-column ul li a {
+            color: white;
             text-decoration: none;
-            transition: 0.3s;
+            opacity: 0.8;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .social-icons {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
-        .footer-links a:hover {
-            color: var(--primary);
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0.8;
         }
         
-        .footer-links a i {
-            font-size: 12px;
+        .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .newsletter button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: #777;
-            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* أنيميشن */
-        @keyframes pulse {
-            0% { 
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.4); 
-            }
-            50% { 
-                transform: scale(1.05);
-            }
-            70% { 
-                box-shadow: 0 0 0 20px rgba(255, 152, 0, 0); 
-            }
-            100% { 
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); 
-            }
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
         }
         
-        /* تصميم متجاوب */
+        .dark-mode .mobile-menu-btn {
+            color: var(--primary-light);
+        }
+        
+        /* Responsive Design */
         @media (max-width: 992px) {
+            .hero-content {
+                width: 60%;
+            }
+            
+            .hero-animation {
+                width: 35%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .hero {
+                height: auto;
+                padding: 3rem 5%;
                 flex-direction: column;
                 text-align: center;
             }
             
             .hero-content {
-                margin-bottom: 50px;
+                width: 100%;
+                margin-bottom: 2rem;
             }
             
-            .nav-links {
-                display: none;
+            .hero-animation {
+                position: relative;
+                right: auto;
+                width: 80%;
+                height: 300px;
+                margin-top: 2rem;
             }
             
-            .mobile-menu {
-                display: block;
-            }
-            
-            .step:not(:last-child)::after {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-content h2 {
-                font-size: 2.2rem;
-            }
-            
-            .diamond {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .diamond-inner {
-                width: 170px;
-                height: 170px;
-                font-size: 50px;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
+            .btn {
+                padding: 0.8rem 1.5rem;
             }
         }
         
         @media (max-width: 576px) {
-            .hero-content h2 {
-                font-size: 1.8rem;
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+            .discount-timer {
+                gap: 1rem;
             }
+            
+            .timer-box {
+                padding: 1rem;
+                min-width: 70px;
+            }
+            
+            .timer-value {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Lottie Animation Container */
+        .lottie-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 99;
+        }
+        
+        .dark-mode .fab {
+            background-color: var(--primary-light);
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <!-- الهيدر -->
+    <!-- Header -->
     <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-gem"></i>
-                    <h1>جوهرة</h1>
-                </div>
-                <div class="nav-links">
-                    <a href="#home">الرئيسية</a>
-                    <a href="#pricing">الباقات</a>
-                    <a href="#how-it-works">كيفية العمل</a>
-                    <a href="#payment">طرق الدفع</a>
-                    <a href="#contact">اتصل بنا</a>
-                </div>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <h1>GameHub</h1>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="ابحث عن الألعاب...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="header-actions">
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
     
-    <!-- القسم الرئيسي -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content animate__animated animate__fadeInLeft">
-                <h2>شحن <span>جواهر فري فاير</span> <br>بأفضل سعر في السوق!</h2>
-                <p>متجر جوهرة يوفر لك شحن جواهر فري فاير مباشرة لحسابك بأسرع وقت وبأفضل الأسعار. احصل على أفضل العروض والخصومات للتجار واللاعبين المحترفين.</p>
-                <a href="https://wa.me/249123456789" class="btn">
-                    ابدأ الآن <i class="fab fa-whatsapp"></i>
-                </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>اكتشف أحدث الألعاب</h2>
+            <p>احصل على أفضل الألعاب الإلكترونية بأسعار تنافسية وعروض حصرية لأعضائنا</p>
+            <button class="btn btn-primary">تسوق الآن</button>
+        </div>
+        
+        <div class="hero-animation" id="heroAnimation"></div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2 class="section-title">تصفح حسب التصنيف</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>ألعاب أكشن</h3>
             </div>
-            <div class="hero-image animate__animated animate__fadeInRight">
-                <div class="diamond">
-                    <div class="diamond-inner">
-                        <i class="fas fa-diamond"></i>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>ألعاب رياضية</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-hat-wizard"></i>
+                </div>
+                <h3>ألعاب تقمص أدوار</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-ghost"></i>
+                </div>
+                <h3>ألعاب رعب</h3>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-chess"></i>
+                </div>
+                <h3>ألعاب استراتيجية</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Games -->
+    <section class="featured-games">
+        <h2 class="section-title">الألعاب المميزة</h2>
+        <div class="games-scroll">
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/300x150?text=Game+1" alt="Game 1">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">لعبة المغامرة الكبرى</h3>
+                    <div>
+                        <span class="game-price">$49.99</span>
+                        <span class="game-discount">20%</span>
                     </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- باقات الأسعار -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>باقات الجواهر</h2>
-            </div>
-            <div class="pricing-cards">
-                <!-- الباقة 1 -->
-                <div class="pricing-card animate__animated animate__fadeInUp">
-                    <h3>الباقة المبتدئة</h3>
-                    <div class="price">25 ج.س <span>لـ 1000 جوهرة</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> شحن فوري خلال دقائق</li>
-                        <li><i class="fas fa-check-circle"></i> دعم فني 24/7</li>
-                        <li><i class="fas fa-check-circle"></i> متاح لجميع السيرفرات</li>
-                        <li><i class="fas fa-check-circle"></i> شحن آمن ومضمون</li>
-                    </ul>
-                    <a href="https://wa.me/249123456789?text=أريد%20شراء%20الباقة%20المبتدئة" class="btn">اطلب الآن</a>
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/300x150?text=Game+2" alt="Game 2">
                 </div>
-                
-                <!-- الباقة 2 (الأكثر شعبية) -->
-                <div class="pricing-card animate__animated animate__fadeInUp animate__delay-1s">
-                    <div class="popular">الأفضل</div>
-                    <h3>الباقة المتوسطة</h3>
-                    <div class="price">45 ج.س <span>لـ 2000 جوهرة</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> شحن فوري خلال دقائق</li>
-                        <li><i class="fas fa-check-circle"></i> دعم فني 24/7</li>
-                        <li><i class="fas fa-check-circle"></i> متاح لجميع السيرفرات</li>
-                        <li><i class="fas fa-check-circle"></i> شحن آمن ومضمون</li>
-                        <li><i class="fas fa-check-circle"></i> +100 جوهرة مجانية</li>
-                    </ul>
-                    <a href="https://wa.me/249123456789?text=أريد%20شراء%20الباقة%20المتوسطة" class="btn">اطلب الآن</a>
-                </div>
-                
-                <!-- الباقة 3 -->
-                <div class="pricing-card animate__animated animate__fadeInUp animate__delay-2s">
-                    <h3>الباقة الاحترافية</h3>
-                    <div class="price">100 ج.س <span>لـ 5000 جوهرة</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> شحن فوري خلال دقائق</li>
-                        <li><i class="fas fa-check-circle"></i> دعم فني 24/7</li>
-                        <li><i class="fas fa-check-circle"></i> متاح لجميع السيرفرات</li>
-                        <li><i class="fas fa-check-circle"></i> شحن آمن ومضمون</li>
-                        <li><i class="fas fa-check-circle"></i> +500 جوهرة مجانية</li>
-                        <li><i class="fas fa-check-circle"></i> خصم 10% للطلبات القادمة</li>
-                    </ul>
-                    <a href="https://wa.me/249123456789?text=أريد%20شراء%20الباقة%20الاحترافية" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- كيفية العمل -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>كيفية العمل</h2>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>اختر الباقة</h3>
-                    <p>اختر الباقة المناسبة لك من متجرنا</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>ادفع بسهولة</h3>
-                    <p>ادفع عبر وسائل الدفع المتاحة</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>أرسل بياناتك</h3>
-                    <p>أرسل رقم حسابك في فري فاير</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>استلم الجواهر</h3>
-                    <p>استلم جواهرك خلال دقائق</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- طرق الدفع -->
-    <section class="payment" id="payment">
-        <div class="container">
-            <div class="section-title">
-                <h2>طرق الدفع المتاحة</h2>
-            </div>
-            <div class="payment-methods">
-                <div class="method">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>فودافون كاش</h3>
-                </div>
-                <div class="method">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h3>تحويل بنكي</h3>
-                </div>
-                <div class="method">
-                    <i class="fab fa-paypal"></i>
-                    <h3>باي بال</h3>
-                </div>
-                <div class="method">
-                    <i class="fas fa-credit-card"></i>
-                    <h3>بطاقات ائتمان</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- الفوتر -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>عن جوهرة</h3>
-                    <p>متجر متخصص في شحن جواهر فري فاير وباقي الألعاب بسعر الجملة مع خدمة عملاء على مدار الساعة وشحن فوري.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
+                <div class="game-info">
+                    <h3 class="game-title">بطولة كرة القدم 2023</h3>
+                    <div>
+                        <span class="game-price">$59.99</span>
                     </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>روابط سريعة</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
-                        <li><a href="#pricing"><i class="fas fa-chevron-left"></i> باقات الجواهر</a></li>
-                        <li><a href="#how-it-works"><i class="fas fa-chevron-left"></i> كيفية العمل</a></li>
-                        <li><a href="#payment"><i class="fas fa-chevron-left"></i> طرق الدفع</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>اتصل بنا</h3>
-                    <ul class="footer-links">
-                        <li><a href="tel:+249123456789"><i class="fas fa-phone"></i> +249 123 456 789</a></li>
-                        <li><a href="mailto:info@johara.com"><i class="fas fa-envelope"></i> info@johara.com</a></li>
-                        <li><a href="https://wa.me/249123456789"><i class="fab fa-whatsapp"></i> واتساب الدعم الفني</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> الخرطوم، السودان</a></li>
-                    </ul>
+                    <button class="add-to-cart">أضف إلى السلة</button>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 متجر جوهرة. جميع الحقوق محفوظة.</p>
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/300x150?text=Game+3" alt="Game 3">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">مملكة السحرة</h3>
+                    <div>
+                        <span class="game-price">$39.99</span>
+                        <span class="game-discount">15%</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
             </div>
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/300x150?text=Game+4" alt="Game 4">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">السباق السريع</h3>
+                    <div>
+                        <span class="game-price">$29.99</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/300x150?text=Game+5" alt="Game 5">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">القلعة المسكونة</h3>
+                    <div>
+                        <span class="game-price">$45.99</span>
+                        <span class="game-discount">30%</span>
+                    </div>
+                    <button class="add-to-cart">أضف إلى السلة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Discount Section -->
+    <section class="discount-section">
+        <h2>عروض خاصة لفترة محدودة!</h2>
+        <p>احصل على خصم يصل إلى 50% على مجموعة مختارة من الألعاب</p>
+        
+        <div class="discount-timer">
+            <div class="timer-box">
+                <div class="timer-value" id="days">02</div>
+                <div class="timer-label">أيام</div>
+            </div>
+            <div class="timer-box">
+                <div class="timer-value" id="hours">12</div>
+                <div class="timer-label">ساعات</div>
+            </div>
+            <div class="timer-box">
+                <div class="timer-value" id="minutes">45</div>
+                <div class="timer-label">دقائق</div>
+            </div>
+            <div class="timer-box">
+                <div class="timer-value" id="seconds">30</div>
+                <div class="timer-label">ثواني</div>
+            </div>
+        </div>
+        
+        <button class="btn">استعرض العروض</button>
+        
+        <div class="lottie-container" id="discountAnimation"></div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GameHub</h3>
+                <p>وجهتك الأولى لشراء الألعاب الإلكترونية بأفضل الأسعار والعروض الحصرية.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">الصفحة الرئيسية</a></li>
+                    <li><a href="#">الألعاب</a></li>
+                    <li><a href="#">العروض</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>حسابي</h3>
+                <ul>
+                    <li><a href="#">تسجيل الدخول</a></li>
+                    <li><a href="#">سجل المشتريات</a></li>
+                    <li><a href="#">قائمة المفضلة</a></li>
+                    <li><a href="#">إعدادات الحساب</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>النشرة البريدية</h3>
+                <div class="newsletter">
+                    <p>اشترك ليصلك كل جديد عن العروض والألعاب الجديدة</p>
+                    <input type="email" placeholder="بريدك الإلكتروني">
+                    <button>اشتراك</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 GameHub. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
     
+    <!-- Floating Action Button -->
+    <div class="fab">
+        <i class="fas fa-gamepad"></i>
+    </div>
+    
     <script>
-        // كود جافاسكريبت لجعل الصفحة تفاعلية
-        document.addEventListener('DOMContentLoaded', function() {
-            // قائمة الجوال
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
             
-            mobileMenu.addEventListener('click', function() {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            });
-            
-            // تأثيرات التمرير
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
-                } else {
-                    header.style.boxShadow = 'none';
-                }
-            });
-            
-            // إضافة تأثيرات للبطاقات عند الظهور
-            const observerOptions = {
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate__fadeInUp');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.pricing-card').forEach(card => {
-                observer.observe(card);
-            });
-            
-            // إرسال بيانات النموذج
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');
-                    contactForm.reset();
-                });
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
             }
+        });
+        
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            const now = new Date();
+            const endDate = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000); // 3 days from now
+            
+            const totalSeconds = Math.floor((endDate - now) / 1000);
+            
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            
+            daysElement.textContent = days.toString().padStart(2, '0');
+            hoursElement.textContent = hours.toString().padStart(2, '0');
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+            secondsElement.textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Lottie Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero Animation
+            const heroAnimation = lottie.loadAnimation({
+                container: document.getElementById('heroAnimation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_kdxvi7jk.json' // Replace with your Lottie JSON
+            });
+            
+            // Discount Animation
+            const discountAnimation = lottie.loadAnimation({
+                container: document.getElementById('discountAnimation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets5.lottiefiles.com/packages/lf20_2znx98yf.json' // Replace with your Lottie JSON
+            });
+        });
+        
+        // Add to Cart Animation
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Animation effect
+                this.textContent = 'تمت الإضافة!';
+                this.style.backgroundColor = '#4CAF50';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    this.textContent = 'أضف إلى السلة';
+                    this.style.backgroundColor = '';
+                }, 2000);
+                
+                // Update cart count
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Cart icon animation
+                const cartIcon = document.querySelector('.cart-icon i');
+                cartIcon.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    cartIcon.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        mobileMenuBtn.addEventListener('click', () => {
+            alert('سيتم فتح القائمة الجانبية هنا');
+            // In a real implementation, you would toggle a mobile menu here
+        });
+        
+        // Floating Action Button
+        const fab = document.querySelector('.fab');
+        fab.addEventListener('click', () => {
+            alert('لوحة التحكم السريعة');
+            // In a real implementation, this could open a quick settings panel
         });
     </script>
 </body>
-</html>
+    </html>
